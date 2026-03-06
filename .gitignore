@@ -1,0 +1,6 @@
+# Never commit these
+.claude.json
+.claude/
+*.key
+*.env
+.env*
