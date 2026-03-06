@@ -9,6 +9,17 @@ set -e
 
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
+notify_slack() {
+    local text="$1"
+    if [ -n "$SLACK_WEBHOOK_URL" ]; then
+        local payload
+        payload=$(printf '{"text":"%s"}' "$text")
+        curl -s -X POST "$SLACK_WEBHOOK_URL" \
+            -H 'Content-type: application/json' \
+            --data-raw "$payload" >/dev/null 2>&1 || true
+    fi
+}
+
 save_session() {
     local name="$1"
     if [ -z "$name" ]; then
@@ -27,6 +38,7 @@ save_session() {
     git push origin "$tag" --force
     echo "Saved session: $name"
     echo "Tag: $tag"
+    notify_slack "Session saved: $name [$(hostname) - $timestamp]"
 }
 
 recall_session() {
@@ -59,6 +71,7 @@ recall_session() {
     echo "=== Restoring to session state ==="
     git checkout "$tag" -- .
     echo "Files restored. Run 'git checkout main' when done to return to latest."
+    notify_slack "Session recalled: $name [$(hostname) - $(date +%Y-%m-%d-%H%M)]"
 }
 
 list_sessions() {
