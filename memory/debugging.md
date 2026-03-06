@@ -163,3 +163,93 @@ kill -9 PID
 | "Connection refused" | Service not running | Start service, check firewall |
 | "Timeout" | Network slowness | Check connection, retry |
 | "404 Not Found" | Resource missing | Check URL, verify existence |
+
+---
+
+## Claude Code Specific Examples
+
+### Example: Context Loss Debugging
+
+**Problem**: Claude Code loses project context after switching projects
+**Steps to reproduce**:
+1. Start session in Project A
+2. Read MEMORY.md and learn new patterns
+3. Switch to Project B
+4. Claude asks about Project A context
+
+**Diagnosis**:
+- `MEMORY.md` is loaded per-session, not global
+- Memory changes don't persist across sessions automatically
+- Git repository location matters
+
+**Solution**:
+1. Always commit memory updates before switching projects
+2. On new workstation: `git clone <repo>` to get all memory
+3. Verify `memory/` directory exists and contains expected files
+4. Use `read MEMORY.md` in each session to reload context
+
+**Example session**:
+```bash
+# In Project A
+cd ~/claude-setup
+git add memory/
+git commit -m "update memory with new patterns"
+git push
+
+# Switch to Project B
+
+# On new workstation
+git clone https://github.com/tmessmerjr/claude-setup.git
+cd claude-setup
+# Memory files are ready
+```
+
+### Example: Tool Not Found Debugging
+
+**Problem**: Claude Code reports "Command not found" for tools
+
+**Diagnostic steps**:
+1. Check if tool is actually installed: `which <command>`
+2. Verify PATH: `echo $PATH`
+3. Check Claude Code MCP configuration: `~/.claude/settings.json`
+4. Restart Claude Code session
+
+**Common solutions**:
+- Tool not in PATH: Add to `.bashrc` or `.zshrc`
+- MCP misconfigured: Verify server config in settings.json
+- Wrong tool name: Check actual command name
+
+**Example**:
+```bash
+# Check if tool exists
+which mcp-github
+# If not found, install it
+npm install -g @anthropic/mcp-github
+
+# Check PATH
+echo $PATH
+# Should include directory with mcp-github
+
+# Restart Claude Code
+# (via restart command or logout/login)
+```
+
+### Example: Memory File Issues
+
+**Problem**: Memory files not updating or visible
+
+**Solutions**:
+1. Check file permissions: `ls -la memory/`
+2. Verify file exists: `ls -la ~/claude_setup/memory/`
+3. Check git status: `cd ~/claude_setup && git status`
+4. Ensure committed to repo: `git log --oneline -- memory/`
+
+**Fix permissions**:
+```bash
+# Make readable and writable
+chmod 644 memory/*.md
+
+# Ensure git sees changes
+git add memory/
+git commit -m "fix memory permissions"
+```

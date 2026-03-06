@@ -74,3 +74,53 @@
 - Explore automatic memory summarization
 - Add machine-readable metadata to memory files
 - Consider multi-language support for international teams
+
+---
+
+## Example Decision Entries
+
+### Example: Tool Selection Decision
+
+**Decision**: Use `mcp__github` tools for code access
+**Rationale**:
+- Native GitHub integration
+- Supports code search, PR management, issue tracking
+- No additional API keys required
+- Consistent with project setup
+
+**Alternatives Considered**:
+- `git` CLI commands only ❌ (clunky for complex operations)
+- External API wrappers ❌ (added dependency)
+- Manual web scraping ❌ (fragile, maintenance nightmare)
+
+**Status**: Implemented ✓
+**Date**: 2024-01-15
+
+**Trade-offs**:
+- + Direct GitHub API access
+- + Rich querying capabilities
+- - Requires internet connection
+- - Authentication handled by Claude Code
+
+### Example: Documentation Format Decision
+
+**Decision**: Use markdown for all documentation
+**Rationale**:
+- Universal format support
+- Easy to version control with git
+- Works in all editors
+- Simple syntax, low learning curve
+
+**Alternatives Considered**:
+- Rich text (Word, etc.) ❌ (not git-friendly, platform-specific)
+- Static site generator (Hugo, Jekyll) ❌ (overkill, additional setup)
+- Database-backed ❌ (unnecessary complexity)
+
+**Status**: Implemented ✓
+**Date**: 2024-01-15
+
+**Trade-offs**:
+- + Simple and portable
+- + Works everywhere
+- - Limited rich formatting
+- - No built-in search (use grep/CLI search)

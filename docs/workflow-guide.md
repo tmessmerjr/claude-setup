@@ -206,3 +206,174 @@ Need help? Check:
 - `memory/` for project-specific knowledge
 - `docs/` for detailed documentation
 - Project repository issues/README
+
+---
+
+## Example Session Flows
+
+### Example 1: Learning New Pattern
+
+**Goal**: Discover and document a useful coding pattern
+
+**Steps**:
+1. Work on task with Claude Code
+2. Notice repeated approach that works well
+3. Create memory entry in `memory/conventions.md`:
+   ```markdown
+   ## New Pattern: [Name]
+
+   **When to use**: [Context]
+   **Example**: [Code example]
+   ```
+4. Commit with: `git commit -m "docs: add new pattern"`
+5. Push to sync across workstations
+
+### Example 2: Making Architecture Decision
+
+**Goal**: Choose between multiple approaches
+
+**Steps**:
+1. Identify decision point
+2. Document in `memory/decisions.md`:
+   ```markdown
+   ## Decision: [Topic]
+
+   **Decision**: [Choice]
+   **Rationale**: [Why]
+   **Alternatives Considered**: [List with reasons they don't work]
+   **Status**: [Implemented/Under review]
+   **Date**: [YYYY-MM-DD]
+   ```
+3. Explain reasoning to team if needed
+4. Update if approach changes
+
+### Example 3: Saving Bug Solution
+
+**Goal**: Remember solution to recurring problem
+
+**Steps**:
+1. Debug the issue following `memory/debugging.md` patterns
+2. Document solution in `memory/debugging.md`:
+   ```markdown
+   ## [Problem Type] Debugging
+
+   **Problem**: [Description]
+   **Steps to reproduce**: [1, 2, 3]
+   **Diagnosis**: [How you found it]
+   **Solution**: [Fix steps]
+   ```
+3. Test solution works
+4. Commit and push
+5. Reference in future debugging
+
+### Example 4: Cross-Workstation Setup
+
+**Goal**: Start working on new machine
+
+**Steps**:
+```bash
+# 1. Clone repository
+cd ~
+git clone https://github.com/tmessmerjr/claude-setup.git
+cd claude-setup
+
+# 2. Verify memory files exist
+ls -la memory/
+ls -la docs/
+
+# 3. Check for updates
+git pull
+
+# 4. Start Claude Code
+# (Claude will auto-load MEMORY.md)
+
+# 5. Start working
+```
+
+**Verification**:
+- `MEMORY.md` content visible in Claude Code
+- All memory files present
+- Git sync complete
+
+---
+
+## Quick Reference
+
+### Common Commands
+
+```bash
+# Update and sync memory
+cd ~/claude-setup
+git add memory/
+git commit -m "update memory"
+git push
+
+# Check memory files
+ls -la memory/
+cat MEMORY.md
+
+# View recent decisions
+git log --oneline -- memory/decisions.md
+
+# Search for patterns
+grep -r "PATTERN_NAME" memory/
+```
+
+---
+
+## Session Management
+
+### Best Practices
+
+1. **Save early, save often**
+   - Update relevant memory files when learning something new
+   - Commit before ending session
+   - Push when working on shared context
+
+2. **Review before starting**
+   - Read `MEMORY.md` to get project context
+   - Check `memory/decisions.md` for architecture decisions
+   - Scan `conventions.md` for coding standards
+
+3. **Document as you go**
+   - Save patterns to `conventions.md` when discovered
+   - Record decisions in `decisions.md` immediately
+   - Add debugging tips to `debugging.md` for recurring issues
+
+### Example Session Flow
+
+```bash
+# Start session
+cd ~/claude-setup
+git pull  # Get latest memory
+read MEMORY.md
+
+# Work on task...
+
+# End session
+git add memory/
+git commit -m "update memory with [topic]"
+git push
+```
+
+### Session Notes Template
+
+Use this format for important learnings at the end of a session:
+
+```markdown
+## Session Notes
+
+### Date: [YYYY-MM-DD]
+### Task: [Brief description]
+
+**Key Learnings**:
+1. [Discovery 1]
+2. [Discovery 2]
+
+**Files Updated**:
+- `filename.md`: What changed
+
+**Next Steps**:
+- [Action item 1]
+- [Action item 2]
+```

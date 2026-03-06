@@ -71,3 +71,154 @@ scripts/
 - `black`: Python code formatting
 - `eslint`: JavaScript/TypeScript linting
 - `go fmt`: Go formatting
+
+---
+
+## Claude Code Session Patterns
+
+### Memory Updates Pattern
+
+**When to use**: At the end of a session when you've learned something valuable
+
+**Example**:
+```markdown
+## Session Notes
+
+### Learned Today
+- Discovered useful git command: `git log --oneline --graph --all` for visualizing branch history
+- Found that Claude Code loads `MEMORY.md` automatically but only reads first 200 lines
+- Confirmed that memory files work across workstations via git sync
+
+### Files Updated
+- Updated `memory/debugging.md` with new troubleshooting steps
+- Added session notes to `MEMORY.md`
+
+### Next Session Plan
+- Review `docs/workflow-guide.md` for complete session workflow
+- Test the new debugging patterns in next session
+```
+
+### Decision Documentation Pattern
+
+**When to use**: When choosing between multiple approaches
+
+**Example**:
+```markdown
+## Technology Decision: [Topic]
+
+**Decision**: [Choose one approach]
+**Rationale**:
+- [Reason 1]
+- [Reason 2]
+
+**Alternatives Considered**:
+- Alternative 1 ❌ (Why it doesn't work)
+- Alternative 2 ❌ (Why it doesn't work)
+
+**Status**: Implemented ✓
+**Date**: [YYYY-MM-DD]
+
+**Trade-offs**:
+- + Advantage 1
+- + Advantage 2
+- - Disadvantage 1
+- - Disadvantage 2
+```
+
+---
+
+## Memory File Conventions
+
+### File Structure
+- `MEMORY.md` - Main index, auto-loaded by Claude Code
+- `memory/conventions.md` - Coding patterns and standards
+- `memory/decisions.md` - Architecture decisions and rationale
+- `memory/debugging.md` - Common debugging patterns and solutions
+- `docs/workflow-guide.md` - Workflow tips and procedures
+
+### Memory File Format
+
+#### For `conventions.md` (Coding Patterns):
+```markdown
+## [Pattern Name]
+
+**Pattern**: [One-line description]
+**When to use**: [Context/situation]
+**Why**:
+- [Reason 1]
+- [Reason 2]
+
+**Example**:
+```bash
+# Example code or command
+# ...
+```
+
+**Notes**: [Additional context]
+```
+
+#### For `decisions.md` (Architecture Decisions):
+```markdown
+## [Decision Title]
+
+**Decision**: [Selected option]
+**Rationale**:
+- [Reason 1]
+- [Reason 2]
+
+**Alternatives Considered**:
+- Option A ❌ (reason)
+- Option B ❌ (reason)
+
+**Status**: Implemented ✓
+**Date**: YYYY-MM-DD
+
+**Trade-offs**:
+- + [Benefit]
+- - [Drawback]
+```
+
+#### For `debugging.md` (Bug Patterns):
+```markdown
+## [Problem Name]
+
+**Problem**: [Description of the issue]
+**Frequency**: [How often it occurs]
+**Symptoms**: [Observable signs]
+
+**Root Cause**: [Explanation]
+
+**Solution**:
+1. [Step 1]
+2. [Step 2]
+
+**Prevention**: [How to avoid]
+**Related**: [Link to related entry]
+```
+
+#### For `MEMORY.md` (Project Overview):
+```markdown
+## Project Notes
+
+### Current Status
+- [Status item 1]
+- [Status item 2]
+
+### Active Work
+- [Current tasks]
+
+### Team Guidelines
+- [Guideline 1]
+- [Guideline 2]
+
+## Quick Reference
+
+### Common Commands
+```bash
+# Command 1
+# Command 2
+```
+
+### Key Contacts
+- [Name]: [Contact info]
+```
