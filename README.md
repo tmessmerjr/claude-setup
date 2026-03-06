@@ -12,7 +12,8 @@ Personal Claude Code orchestration setup with local LLM support via Ollama.
 
 ```
 claude_setup/
-├── MEMORY.md          # Main index - Claude auto-reads this
+├── CLAUDE.md          # Auto-loaded by Claude Code on startup
+├── MEMORY.md          # Manual context - load explicitly each session
 ├── README.md          # This file
 ├── memory/            # Shared knowledge base
 │   ├── conventions.md  # Coding standards
@@ -21,6 +22,8 @@ claude_setup/
 ├── docs/              # Detailed documentation
 │   └── workflow-guide.md
 ├── scripts/           # Automation scripts
+│   ├── claude_local.sh
+│   ├── claude_cloud.sh
 │   └── sync-memory.sh
 └── models/            # Model notes
 ```
@@ -43,9 +46,10 @@ cd ~/claude_setup
 echo 'export GITHUB_PAT=your_token_here' >> ~/.bashrc
 source ~/.bashrc
 
-# Run setup script
-chmod +x scripts/setup_new_machine.sh
-./scripts/setup_new_machine.sh
+# Set up aliases (add to ~/.bashrc)
+alias claude-local='bash ~/claude_setup/scripts/claude_local.sh'
+alias claude-cloud='bash ~/claude_setup/scripts/claude_cloud.sh'
+source ~/.bashrc
 ```
 
 ### After Install
@@ -74,7 +78,8 @@ claude-local
 
 This repository includes a structured memory system for cross-workstation collaboration:
 
-- **Auto-loaded context**: Claude Code automatically reads `MEMORY.md`
+- **CLAUDE.md auto-loaded**: Claude Code automatically reads `CLAUDE.md` on startup
+- **MEMORY.md manual**: Load explicitly each session with `read MEMORY.md`
 - **Version-controlled**: All memory files tracked in git
 - **Seamless sync**: Use git to share between workstations
 

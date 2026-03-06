@@ -25,7 +25,7 @@ claude-setup/
 └── scripts/           # Automation scripts
     ├── claude_local.sh
     ├── claude_cloud.sh
-    └── setup_new_machine.sh
+    └── sync-memory.sh
 ```
 
 ## Key Principles
@@ -51,7 +51,7 @@ claude-setup/
 - MEMORY.md must be loaded manually, CLAUDE.md is automatic
 
 **Next steps**:
-- Set up work machine using setup_new_machine.sh
+- Set up work machine by cloning repo and adding aliases
 - Experiment with subagents using cloud models
 
 ### Session: AI Memory Concepts Discussion (March 2026)

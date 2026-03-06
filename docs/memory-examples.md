@@ -4,7 +4,7 @@ This guide shows you how to format different types of session information into t
 
 ## MEMORY.md - Main Index
 
-**Purpose**: Auto-read by Claude at the start of every session. Keep it updated with high-level context.
+**Purpose**: Manual context file - load explicitly each session with `read MEMORY.md`. Keep it updated with high-level context.
 
 ```markdown
 # Project Overview
