@@ -53,3 +53,48 @@ claude-setup/
 **Next steps**:
 - Set up work machine using setup_new_machine.sh
 - Experiment with subagents using cloud models
+
+### Session: AI Memory Concepts Discussion (March 2026)
+**What was explored**:
+- Concept of AI memory systems vs human working memory
+- Local AI inference vs human short-term memory retention
+- Ongoing context window limitations (tokens, not permanent storage)
+- Memory vs Context Window distinction in LLMs
+- Human memory patterns: encoding, storage, retrieval vs token attention
+- AI can "remember" through session persistence (file storage, database)
+- AI memory files: structured (JSON/DB) vs semantic (embedding vectors)
+
+**Key distinctions**:
+- Human: Biological brain, permanent memory, no token limit, context is attention
+- AI: Computational, temporary context window, permanent storage via files, context is model state
+
+**Memory file formats**:
+- Structured: JSON, SQLite, YAML, text files
+- Semantic: Vector embeddings, RAG (Retrieval-Augmented Generation)
+- Process: Load → Read → Modify → Save → Auto-load on next session
+
+**AI workflow patterns**:
+- Always commit memory updates before ending session
+- Pull before starting new session on any machine
+- CLAUDE.md auto-loaded, MEMORY.md must be manually loaded
+- Memory is versioned (treat like code, commit changes)
+
+### Session: AI Memory Concepts Exploration (March 2026)
+**Topics discussed**:
+- **AI Memory systems**:
+  - Working memory: Current conversation context (auto-truncated to ~2000 lines)
+  - Auto memory: Persistent directory at ~/.claude/projects/-home-tmessmer-claude-setup/memory/
+  - Long-term memory: Version-controlled, cross-machine synced via git
+  - Semantic memory organization by topic, not chronology
+- **Local AI vs Cloud**:
+  - Local: Ollama + glm-4.7-flash (faster, private, but less capable models)
+  - Cloud: Anthropic API (higher capability, paid, but less private)
+  - Subagents can use different backends than main session
+
+**Key conventions established**:
+- MEMORY.md is NOT auto-loaded - must explicitly load with `read MEMORY.md`
+- CLAUDE.md is auto-loaded by Claude Code on startup
+- Memory files are version controlled via git and synced across machines
+- Create separate topic files for detailed notes (e.g., debugging.md)
+- Only commit memory updates when knowledge is stable and verified
+- Update memory if previous knowledge is proven wrong or changed
