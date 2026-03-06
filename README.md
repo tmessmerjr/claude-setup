@@ -24,24 +24,6 @@ claude_setup/
 │   └── sync-memory.sh
 └── models/            # Model notes
 ```
-- **Memory System** - Cross-workstation context and documentation
-
-## Project Structure
-
-```
-claude_setup/
-├── MEMORY.md          # Main index - Claude auto-reads this
-├── README.md          # This file
-├── memory/            # Shared knowledge base
-│   ├── conventions.md  # Coding standards
-│   ├── decisions.md    # Architecture decisions
-│   └── debugging.md    # Debugging patterns
-├── docs/              # Detailed documentation
-│   └── workflow-guide.md
-├── scripts/           # Automation scripts
-│   └── sync-memory.sh
-└── models/            # Model notes
-```
 
 ## New Machine Setup
 
@@ -115,3 +97,51 @@ See [`docs/workflow-guide.md`](docs/workflow-guide.md) for detailed workflow inf
 
 ## Models
 See the `models/` directory for notes on tested models and performance.
+
+## Contributing
+
+Want to improve this setup? Great!
+
+### How to contribute
+
+1. **Fork this repository** (if you don't already have a fork)
+2. **Clone your fork**:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/claude-setup.git
+   cd claude-setup
+   ```
+3. **Create a feature branch**:
+   ```bash
+   git checkout -b feature/your-improvement
+   ```
+4. **Make your changes** - Improve templates, add examples, fix issues
+5. **Commit your changes**:
+   ```bash
+   git add .
+   git commit -m "feat: describe your improvement"
+   ```
+6. **Push to your fork**:
+   ```bash
+   git push origin feature/your-improvement
+   ```
+7. **Open a Pull Request** to contribute back to the main repository
+
+### What makes a good contribution
+
+- **Practical improvements** that help real users
+- **Clear documentation** explaining what changed and why
+- **Working examples** that demonstrate the new feature
+- **Testing** on different systems/platforms
+- **Follow the existing style** in the codebase
+
+### Common improvements
+
+- New memory file types (security practices, performance tips, etc.)
+- Better examples in existing memory files
+- Improved templates for common workflows
+- Bug fixes in setup scripts
+- Cross-platform support improvements
+
+## License
+
+MIT License - feel free to use this setup however you like!
