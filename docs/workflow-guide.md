@@ -21,7 +21,7 @@
    - Run setup scripts if available
 
 4. **Start using**:
-   - Claude Code will automatically load context from `MEMORY.md`
+   - Claude Code does NOT auto-load MEMORY.md - tell Claude: `read MEMORY.md and continue from where we left off`
    - Use `memory/` files as reference for conventions and decisions
    - Update memory files as you learn more about the project
 
@@ -163,7 +163,7 @@
 
 ### Auto-Memory Configuration
 
-To enable automatic memory persistence:
+Note: There is no automatic memory persistence in Claude Code.
 
 1. Create memory directory:
    ```bash
@@ -177,7 +177,7 @@ To enable automatic memory persistence:
    ...
    ```
 
-3. Claude Code will auto-read on next session
+3. Tell Claude manually: `read MEMORY.md and continue from where we left off`
 
 ### Custom Scripts
 
@@ -285,7 +285,7 @@ ls -la docs/
 git pull
 
 # 4. Start Claude Code
-# (Claude will auto-load MEMORY.md)
+# Tell Claude: "read MEMORY.md and continue from where we left off"
 
 # 5. Start working
 ```

@@ -86,7 +86,7 @@ scripts/
 
 ### Learned Today
 - Discovered useful git command: `git log --oneline --graph --all` for visualizing branch history
-- Found that Claude Code loads `MEMORY.md` automatically but only reads first 200 lines
+- MEMORY.md must be loaded manually each session - only CLAUDE.md is auto-loaded
 - Confirmed that memory files work across workstations via git sync
 
 ### Files Updated
@@ -130,7 +130,7 @@ scripts/
 ## Memory File Conventions
 
 ### File Structure
-- `MEMORY.md` - Main index, auto-loaded by Claude Code
+- `MEMORY.md` - Main context index, must be loaded manually each session
 - `memory/conventions.md` - Coding patterns and standards
 - `memory/decisions.md` - Architecture decisions and rationale
 - `memory/debugging.md` - Common debugging patterns and solutions

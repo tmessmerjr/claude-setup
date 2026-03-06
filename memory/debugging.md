@@ -5,7 +5,7 @@
 ### Session Issues
 **Problem**: Claude Code loses context between sessions
 **Solution**:
-1. Ensure `MEMORY.md` exists in project root
+1. MEMORY.md is NOT auto-loaded - tell Claude: `read MEMORY.md and continue from where we left off`
 2. Check that memory files are committed to git
 3. Verify working directory is correct
 4. Check `.claude/settings.json` for configuration issues
@@ -224,7 +224,7 @@ cd claude-setup
 # Check if tool exists
 which mcp-github
 # If not found, install it
-npm install -g @anthropic/mcp-github
+claude mcp list  # check your actual MCP servers
 
 # Check PATH
 echo $PATH
